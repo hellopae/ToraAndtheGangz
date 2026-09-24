@@ -115,8 +115,14 @@
         if(item.setting) line(card,'p','📍 '+item.setting,'meta');
         const details=line(card,'details',''); line(details,'summary','อ่านบทและแผนภาพ');
         if(item.why) line(details,'p','ทำไมเรื่องนี้น่าดู: '+item.why);
-        if(item.script) line(details,'p',String(item.script),'body-text');
-        if(Array.isArray(item.visualPlan)) { const shots=line(details,'ol','','shots'); for(const shot of item.visualPlan) line(shots,'li',typeof shot==='string'?shot:JSON.stringify(shot)); }
+        if(item.script) {
+          if(typeof item.script==='string') line(details,'p',item.script,'body-text');
+          else if(typeof item.script==='object') {
+            const labels={opening:'เปิด',attempt:'พยายาม',twist:'พลิก',punchline:'ปิดมุก',durationSec:'ระยะเวลา (วินาที)'};
+            for(const [key,label] of Object.entries(labels)) if(item.script[key]) line(details,'p',label+': '+item.script[key],'body-text');
+          }
+        }
+        if(Array.isArray(item.visualPlan)) { const shots=line(details,'ol','','shots'); for(const shot of item.visualPlan) line(shots,'li',typeof shot==='string'?shot:[shot.desc,shot.movement&&'ภาพ: '+shot.movement,shot.sound&&'เสียง: '+shot.sound].filter(Boolean).join(' · ')); }
         ui.ideas.append(card);
       });
     }
