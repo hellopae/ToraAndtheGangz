@@ -1,0 +1,13 @@
+# Public creative site only. Keep local production work and credentials private.
+*
+!/.gitignore
+!/README.md
+!/CHARACTER_BIBLE.md
+!/index.html
+!/pic/
+!/pic/*.jpg
+!/pic/*.JPG
+!/reports/
+!/reports/animation-channel-guide.html
+!/reports/tora-select-3.html
+!/reports/แนวทาง ช่อง แอนิเมชัน YouTube.md

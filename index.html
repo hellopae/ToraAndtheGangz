@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tora & the Gangz · เลือก 3 เรื่อง</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#25213b; --muted:#6c6880; --paper:#fffdfa; --line:#eadfd4; --orange:#ffb45b; --blue:#bfe6ff; --pink:#ffd9e8; --yellow:#fff0ac; --radius:20px; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#f7f4ef; color:var(--ink); font:16px/1.65 Sarabun,sans-serif; }
+    button, input { font:inherit; }
+    button { cursor:pointer; }
+    .shell { max-width:1180px; margin:auto; padding:22px 18px 110px; }
+    .hero { display:grid; gap:22px; align-items:center; padding:25px; background:var(--paper); border:1px solid var(--line); border-radius:28px; box-shadow:0 16px 42px #392a1710; overflow:hidden; }
+    .eyebrow { display:inline-block; background:var(--yellow); border-radius:999px; padding:5px 12px; font-size:.82rem; font-weight:700; letter-spacing:.06em; }
+    h1,h2,h3 { font-family:Mali,Sarabun,sans-serif; line-height:1.35; }
+    h1 { margin:12px 0 6px; font-size:clamp(2rem,6vw,4rem); }
+    h2 { font-size:1.45rem; }
+    .hero p { color:var(--muted); margin:0; }
+    .hero img { width:100%; border-radius:20px; aspect-ratio:1.9; object-fit:cover; object-position:center 50%; background:#2376c3; }
+    .hub { display:grid; gap:12px; margin:18px 0 8px; }
+    .hub a { display:block; padding:13px 17px; border-radius:16px; background:white; border:1px solid var(--line); color:var(--ink); text-decoration:none; font-weight:700; }
+    .hub a:hover { border-color:#e78433; }
+    .cast { display:grid; gap:10px; margin:18px 0 24px; }
+    .cast div { border-radius:16px; padding:13px 16px; background:white; border:1px solid var(--line); }
+    .cast strong { display:block; font-family:Mali,Sarabun,sans-serif; }
+    .cast small { color:var(--muted); }
+    .cast .tora { border-top:5px solid var(--orange); } .cast .minnie { border-top:5px solid var(--pink); } .cast .poppy { border-top:5px solid var(--yellow); } .cast .macky { border-top:5px solid var(--blue); }
+    .toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:24px 0; }
+    .button { border:0; border-radius:999px; padding:11px 18px; font-weight:700; background:var(--ink); color:white; transition:transform .18s,box-shadow .18s; }
+    .button:hover { transform:translateY(-2px); box-shadow:0 5px 12px #25213b25; }
+    .button.secondary { background:white; color:var(--ink); border:1px solid var(--line); }
+    .button:disabled { opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; }
+    .file-button { position:relative; overflow:hidden; }
+    .file-button input { position:absolute; inset:0; opacity:0; cursor:pointer; }
+    #status { color:var(--muted); margin:0 0 18px; }
+    .meta { color:var(--muted); font-size:.9rem; margin-bottom:12px; }
+    .grid { display:grid; gap:15px; }
+    .card { background:var(--paper); border:2px solid var(--line); border-radius:var(--radius); padding:18px; transition:border-color .18s,transform .18s,box-shadow .18s; }
+    .card:hover { transform:translateY(-2px); box-shadow:0 9px 20px #3b2b1c12; }
+    .card.selected { border-color:#e78433; box-shadow:0 0 0 3px #ffb45b50; }
+    .card-head { display:flex; gap:10px; align-items:flex-start; justify-content:space-between; }
+    .number { display:inline-flex; align-items:center; justify-content:center; width:33px; height:33px; flex:none; border-radius:50%; background:var(--orange); font-weight:700; }
+    .card h3 { margin:0 auto 6px 0; font-size:1.2rem; }
+    .pick { border:1px solid #dbbd9c; background:white; color:#774722; border-radius:999px; padding:7px 13px; font-weight:700; white-space:nowrap; }
+    .selected .pick { background:#e78433; color:white; border-color:#e78433; }
+    .hook { font-weight:600; margin:12px 0; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; }
+    .chip { background:var(--blue); padding:3px 10px; border-radius:999px; font-size:.83rem; font-weight:700; }
+    .chip:nth-child(2n) { background:var(--pink); }
+    .chip:nth-child(3n) { background:var(--yellow); }
+    details { margin-top:12px; border-top:1px solid var(--line); padding-top:10px; }
+    summary { cursor:pointer; font-weight:700; }
+    .body-text { white-space:pre-wrap; margin:7px 0 0; }
+    .shots { margin:7px 0 0; padding-left:1.5rem; }
+    .selection { position:fixed; left:0; right:0; bottom:0; background:#fffdfaf2; border-top:1px solid var(--line); backdrop-filter:blur(12px); padding:12px 18px; z-index:10; }
+    .selection-inner { max-width:1180px; margin:auto; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
+    .selection strong { font-family:Mali,Sarabun,sans-serif; }
+    .selection .actions { display:flex; gap:8px; }
+    .notice { background:white; padding:22px; border:1px dashed #ccbbaa; border-radius:var(--radius); color:var(--muted); }
+    @media(min-width:768px) { .hero { grid-template-columns:1fr 1fr; padding:34px; } .hub { grid-template-columns:repeat(3,1fr); } .cast { grid-template-columns:repeat(4,1fr); } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(min-width:1024px) { .grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    @media(min-width:1440px) { .shell { max-width:1280px; } .selection-inner { max-width:1280px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div><span class="eyebrow">STORY ROOM · WEEKLY PICKS</span><h1>Tora & the Gangz</h1><p>เลือก 3 เรื่องที่อยากให้แก๊งตัวเล็กออกไปซนต่อจาก 10 ไอเดียประจำสัปดาห์ เลือกแล้วดาวน์โหลดหรือคัดลอกรายการส่งให้ทีมทำบทเต็ม</p></div>
+      <img src="pic/IMG_7912.JPG" alt="ภาพต้นแบบ Tora, Macky, Poppy และ Minnie โดยคุณเป้">
+    </header>
+    <nav class="hub" aria-label="ข้อมูลโปรเจกต์"><a href="CHARACTER_BIBLE.md">🎨 คัมภีร์ตัวละครและภาพต้นแบบ</a><a href="reports/animation-channel-guide.html">📊 วิเคราะห์แนวช่องแอนิเมชัน</a><a href="https://claude.ai/code/routines/trig_01TxX3pf1uqgAYk5KpMNYhuF">⚡ รูทีน Claude เสนอ 10 เรื่อง</a></nav>
+    <section class="cast" aria-label="ตัวละครหลัก"><div class="tora"><strong>🐯 Tora</strong><small>แมวส้มอยากเป็นเจ้าป่า</small></div><div class="minnie"><strong>🐰 Minnie</strong><small>กระต่ายฟ้าอยากเที่ยวโลก</small></div><div class="poppy"><strong>🐶 Poppy</strong><small>ปอมมึนอยากเป็นนักร้อง</small></div><div class="macky"><strong>🐹 Macky</strong><small>แฮมสเตอร์ถือชีสอยากเป็นฮีโร่</small></div></section>
+    <div class="toolbar">
+      <button class="button" id="refresh">ดึงเรื่องล่าสุด</button>
+      <label class="button secondary file-button">เปิดไฟล์ batch JSON <input type="file" id="file" accept=".json,application/json"></label>
+      <span class="meta" id="week"></span>
+    </div>
+    <p id="status" role="status" aria-live="polite">กำลังตรวจเรื่องล่าสุด…</p>
+    <section class="grid" id="ideas" aria-label="ไอเดียเรื่องสั้น"></section>
+  </main>
+  <div class="selection"><div class="selection-inner"><strong id="counter">เลือกแล้ว 0 / 3 เรื่อง</strong><div class="actions"><button class="button secondary" id="copy" disabled>คัดลอก</button><button class="button" id="download" disabled>ดาวน์โหลดผลเลือก</button></div></div></div>
+  <script>
+    const endpoint = 'https://firestore.googleapis.com/v1/projects/agapae-studio/databases/(default)/documents/agents/science_video?key=AIzaSyCtIZVYmibm4Rwb878iEdnxHjvpVcLfs2E';
+    const ui = Object.fromEntries(['refresh','file','week','status','ideas','counter','copy','download'].map(id => [id,document.getElementById(id)]));
+    let batch = null;
+    const chosen = new Set();
+    function message(value) { ui.status.textContent = value; }
+    function selection() { return { series:'Tora & the Gangz', week:batch?.week, selectedIds:[...chosen], selectedTitles:batch?.items?.filter(item=>chosen.has(item.id)).map(item=>item.title)||[], selectedAt:new Date().toISOString(), note:'รอคุณเป้ยืนยันและสั่งผลิต ไม่ใช่การอนุมัติอัป YouTube' }; }
+    function updateButtons() { ui.counter.textContent = `เลือกแล้ว ${chosen.size} / 3 เรื่อง`; ui.copy.disabled = ui.download.disabled = chosen.size !== 3; }
+    function line(parent, tag, value, className) { const node=document.createElement(tag); node.textContent=value; if(className)node.className=className; parent.append(node); return node; }
+    function render() {
+      ui.ideas.replaceChildren(); chosen.clear(); updateButtons();
+      if (!batch || batch.series !== 'Tora & the Gangz' || !Array.isArray(batch.items) || batch.items.length !== 10) {
+        line(ui.ideas,'div','ยังไม่มี batch Tora & the Gangz ครบ 10 เรื่อง อาจเป็นเพราะ Claude ยังไม่รันหรือยังไม่ซิงก์สำเร็จ','notice');
+        ui.week.textContent=''; return;
+      }
+      ui.week.textContent=`สัปดาห์ ${batch.week} · ${batch.items.length} เรื่อง`;
+      batch.items.forEach((item,index)=>{
+        const card=document.createElement('article'); card.className='card';
+        const head=line(card,'div','','card-head'); line(head,'span',String(index+1),'number');
+        line(head,'h3',item.title||`เรื่องที่ ${index+1}`);
+        const pick=line(head,'button','เลือกเรื่องนี้','pick'); pick.type='button'; pick.setAttribute('aria-pressed','false');
+        pick.addEventListener('click',()=>{
+          if(chosen.has(item.id)) chosen.delete(item.id);
+          else if(chosen.size<3) chosen.add(item.id);
+          else { message('เลือกได้สูงสุด 3 เรื่อง กรุณายกเลิกหนึ่งเรื่องก่อน'); return; }
+          card.classList.toggle('selected',chosen.has(item.id)); pick.textContent=chosen.has(item.id)?'✓ เลือกแล้ว':'เลือกเรื่องนี้'; pick.setAttribute('aria-pressed',String(chosen.has(item.id))); updateButtons(); message(chosen.size===3?'ครบ 3 เรื่องแล้ว ดาวน์โหลดผลเลือกหรือคัดลอกส่งต่อได้':'เลือกได้อีก '+(3-chosen.size)+' เรื่อง');
+        });
+        line(card,'p',item.hook||'','hook');
+        const chips=line(card,'div','','chips'); for(const person of (Array.isArray(item.characters)?item.characters:[])) line(chips,'span',String(person),'chip');
+        if(item.setting) line(card,'p','📍 '+item.setting,'meta');
+        const details=line(card,'details',''); line(details,'summary','อ่านบทและแผนภาพ');
+        if(item.why) line(details,'p','ทำไมเรื่องนี้น่าดู: '+item.why);
+        if(item.script) line(details,'p',String(item.script),'body-text');
+        if(Array.isArray(item.visualPlan)) { const shots=line(details,'ol','','shots'); for(const shot of item.visualPlan) line(shots,'li',typeof shot==='string'?shot:JSON.stringify(shot)); }
+        ui.ideas.append(card);
+      });
+    }
+    function accept(value) { const next=value?.fields?.dataJson?.stringValue?JSON.parse(value.fields.dataJson.stringValue):value?.batch||value; batch=next; render(); message(batch?.series==='Tora & the Gangz'&&batch?.items?.length===10?'พร้อมเลือก 3 เรื่อง':'ข้อมูลยังไม่ใช่ 10 เรื่องของ Tora & the Gangz'); }
+    async function refresh() { message('กำลังดึงเรื่องล่าสุด…'); try { const response=await fetch(endpoint); if(response.status===404){accept(null);return;} if(!response.ok)throw Error('HTTP '+response.status); accept(await response.json()); } catch(error) { batch=null; render(); message('เชื่อมฐานข้อมูลไม่ได้: '+error.message+' · ใช้ปุ่มเปิดไฟล์ batch JSON ได้'); } }
+    ui.refresh.addEventListener('click',refresh);
+    ui.file.addEventListener('change',async()=>{ const file=ui.file.files?.[0]; if(!file)return; try { accept(JSON.parse(await file.text())); } catch(error){ message('ไฟล์ JSON อ่านไม่ได้: '+error.message); } });
+    ui.copy.addEventListener('click',async()=>{ try { await navigator.clipboard.writeText(JSON.stringify(selection(),null,2)); message('คัดลอกผลเลือก 3 เรื่องแล้ว'); } catch { message('คัดลอกไม่ได้ กรุณาใช้ปุ่มดาวน์โหลด'); } });
+    ui.download.addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(selection(),null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a');a.href=url;a.download=`tora-selected-${batch.week}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('ดาวน์โหลดผลเลือก 3 เรื่องแล้ว'); });
+    refresh();
+  </script>
+</body>
+</html>
