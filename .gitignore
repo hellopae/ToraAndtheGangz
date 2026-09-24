@@ -11,3 +11,12 @@
 !/reports/animation-channel-guide.html
 !/reports/tora-select-3.html
 !/reports/แนวทาง ช่อง แอนิเมชัน YouTube.md
+
+# Share keyframes for the three W39 animation previews; keep rendered drafts local.
+!/animation-previews/
+/animation-previews/*
+!/animation-previews/2026-W39/
+/animation-previews/2026-W39/*
+!/animation-previews/2026-W39/README.md
+!/animation-previews/2026-W39/keyframes/
+!/animation-previews/2026-W39/keyframes/*.png
