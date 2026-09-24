@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tora & the Gangz · เลือก 3 เรื่อง</title>
+  <title>Tora & the Gangz · Story Pipeline</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     :root { --ink:#25213b; --muted:#6c6880; --paper:#fffdfa; --line:#eadfd4; --orange:#ffb45b; --blue:#bfe6ff; --pink:#ffd9e8; --yellow:#fff0ac; --radius:20px; }
     * { box-sizing:border-box; }
     body { margin:0; background:#f7f4ef; color:var(--ink); font:16px/1.65 Sarabun,sans-serif; }
-    button, input { font:inherit; }
+    button, input, textarea { font:inherit; }
     button { cursor:pointer; }
     .shell { max-width:1180px; margin:auto; padding:22px 18px 110px; }
     .hero { display:grid; gap:22px; align-items:center; padding:25px; background:var(--paper); border:1px solid var(--line); border-radius:28px; box-shadow:0 16px 42px #392a1710; overflow:hidden; }
@@ -61,7 +61,12 @@
     .selection strong { font-family:Mali,Sarabun,sans-serif; }
     .selection .actions { display:flex; gap:8px; }
     .notice { background:white; padding:22px; border:1px dashed #ccbbaa; border-radius:var(--radius); color:var(--muted); }
-    @media(min-width:768px) { .hero { grid-template-columns:1fr 1fr; padding:34px; } .hub { grid-template-columns:repeat(3,1fr); } .cast { grid-template-columns:repeat(4,1fr); } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    .stages{display:grid;gap:10px;margin:22px 0}.stage-link{display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--line);border-radius:16px;background:white;color:var(--ink);text-decoration:none;font-weight:700}.stage-link b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--yellow)}.stage-link small{margin-left:auto;color:var(--muted)}
+    .stage{margin:32px 0;scroll-margin-top:20px}.stage-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px}.stage-heading h2{margin:0}.stage-heading p{margin:0;color:var(--muted)}
+    .comment{display:block;margin-top:15px;font-weight:700;font-size:.92rem}.comment textarea{display:block;width:100%;min-height:76px;resize:vertical;margin-top:5px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);font-weight:400}
+    .mini-list{display:grid;gap:10px}.mini-item{padding:15px 18px;border:1px solid var(--line);border-radius:16px;background:white}.mini-item strong{display:block}.mini-item p{margin:4px 0 0;color:var(--muted)}.mini-item a{color:#774722}
+    @media(min-width:768px){.stages{grid-template-columns:repeat(4,1fr)}}
+    @media(min-width:768px) { .hero { grid-template-columns:1fr 1fr; padding:34px; } .hub { grid-template-columns:repeat(4,1fr); } .cast { grid-template-columns:repeat(4,1fr); } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media(min-width:1024px) { .grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
     @media(min-width:1440px) { .shell { max-width:1280px; } .selection-inner { max-width:1280px; } }
   </style>
@@ -69,46 +74,58 @@
 <body>
   <main class="shell">
     <header class="hero">
-      <div><span class="eyebrow">STORY ROOM · WEEKLY PICKS</span><h1>Tora & the Gangz</h1><p>เลือก 3 เรื่องที่อยากให้แก๊งตัวเล็กออกไปซนต่อจาก 10 ไอเดียประจำสัปดาห์ เลือกแล้วดาวน์โหลดหรือคัดลอกรายการส่งให้ทีมทำบทเต็ม</p></div>
+      <div><span class="eyebrow">STORY ROOM · WEEKLY PICKS</span><h1>Tora & the Gangz</h1><p>จาก 10 ไอเดีย → เลือก 3 เรื่องพร้อมคอมเมนต์ → ทำเสียงและวิดีโอ → เผยแพร่บน YouTube</p></div>
       <img src="pic/IMG_7912.JPG" alt="ภาพต้นแบบ Tora, Macky, Poppy และ Minnie โดยคุณเป้">
     </header>
-    <nav class="hub" aria-label="ข้อมูลโปรเจกต์"><a href="CHARACTER_BIBLE.md">🎨 คัมภีร์ตัวละครและภาพต้นแบบ</a><a href="reports/animation-channel-guide.html">📊 วิเคราะห์แนวช่องแอนิเมชัน</a><a href="https://claude.ai/code/routines/trig_01TxX3pf1uqgAYk5KpMNYhuF">⚡ รูทีน Claude เสนอ 10 เรื่อง</a></nav>
+    <nav class="hub" aria-label="ข้อมูลโปรเจกต์"><a href="CHARACTER_BIBLE.md">🎨 คัมภีร์ตัวละครและภาพต้นแบบ</a><a href="reports/animation-channel-guide.html">📊 วิเคราะห์แนวช่องแอนิเมชัน</a><a href="https://claude.ai/code/routines/trig_01TxX3pf1uqgAYk5KpMNYhuF">⚡ รูทีน Claude เสนอ 10 เรื่อง</a><a href="https://hellopae.github.io/AGAPAEagent/#science">🎬 หน้า Agent · ติดตามงาน</a></nav>
     <section class="cast" aria-label="ตัวละครหลัก"><div class="tora"><strong>🐯 Tora</strong><small>แมวส้มอยากเป็นเจ้าป่า</small></div><div class="minnie"><strong>🐰 Minnie</strong><small>กระต่ายฟ้าอยากเที่ยวโลก</small></div><div class="poppy"><strong>🐶 Poppy</strong><small>ปอมมึนอยากเป็นนักร้อง</small></div><div class="macky"><strong>🐹 Macky</strong><small>แฮมสเตอร์ถือชีสอยากเป็นฮีโร่</small></div></section>
+    <nav class="stages" aria-label="ขั้นตอนงาน"><a class="stage-link" href="#ideas-stage"><b>1</b> บท 10 เรื่อง <small id="ideas-count">0</small></a><a class="stage-link" href="#selected-stage"><b>2</b> บทที่เลือกแล้ว <small id="selected-count">0/3</small></a><a class="stage-link" href="#making-stage"><b>3</b> กำลังทำ Animation <small id="making-count">0</small></a><a class="stage-link" href="#published-stage"><b>4</b> ขึ้น YouTube แล้ว <small id="published-count">0</small></a></nav>
     <div class="toolbar">
       <button class="button" id="refresh">ดึงเรื่องล่าสุด</button>
       <label class="button secondary file-button">เปิดไฟล์ batch JSON <input type="file" id="file" accept=".json,application/json"></label>
       <span class="meta" id="week"></span>
     </div>
     <p id="status" role="status" aria-live="polite">กำลังตรวจเรื่องล่าสุด…</p>
-    <section class="grid" id="ideas" aria-label="ไอเดียเรื่องสั้น"></section>
+    <section class="stage" id="ideas-stage"><div class="stage-heading"><h2>1. บท 10 เรื่องที่เสนอให้เลือก</h2><p>เลือกได้ 3 เรื่อง และเขียนสิ่งที่อยากปรับใต้แต่ละบท</p></div><div class="grid" id="ideas" aria-label="ไอเดียเรื่องสั้น"></div></section>
+    <section class="stage" id="selected-stage"><div class="stage-heading"><h2>2. บทที่เลือกแล้ว</h2><p>รายการที่เลือกในเบราว์เซอร์นี้</p></div><div class="mini-list" id="selected-list"></div></section>
+    <section class="stage" id="making-stage"><div class="stage-heading"><h2>3. Animation ที่กำลังทำอยู่</h2><p>บทพากย์ · เสียง · วิดีโอ · รอตรวจ</p></div><div class="mini-list" id="making-list"></div></section>
+    <section class="stage" id="published-stage"><div class="stage-heading"><h2>4. วิดีโอที่ขึ้น YouTube แล้ว</h2><p>แสดงเฉพาะรายการที่มีสถานะเผยแพร่</p></div><div class="mini-list" id="published-list"></div></section>
   </main>
-  <div class="selection"><div class="selection-inner"><strong id="counter">เลือกแล้ว 0 / 3 เรื่อง</strong><div class="actions"><button class="button secondary" id="copy" disabled>คัดลอก</button><button class="button" id="download" disabled>ดาวน์โหลดผลเลือก</button></div></div></div>
+  <div class="selection"><div class="selection-inner"><strong id="counter">เลือกแล้ว 0 / 3 เรื่อง</strong><div class="actions"><button class="button secondary" id="copy" disabled>คัดลอกพร้อมคอมเมนต์</button><button class="button" id="download" disabled>ดาวน์โหลดผลเลือก</button></div></div></div>
   <script>
     const endpoint = 'https://firestore.googleapis.com/v1/projects/agapae-studio/databases/(default)/documents/agents/science_video?key=AIzaSyCtIZVYmibm4Rwb878iEdnxHjvpVcLfs2E';
-    const ui = Object.fromEntries(['refresh','file','week','status','ideas','counter','copy','download'].map(id => [id,document.getElementById(id)]));
+    const ui = Object.fromEntries(['refresh','file','week','status','ideas','counter','copy','download','selected-list','making-list','published-list','ideas-count','selected-count','making-count','published-count'].map(id => [id,document.getElementById(id)]));
     let batch = null;
     const chosen = new Set();
+    let comments={};
+    const storageKey=week=>'tora-gangz-review:'+week;
+    function restore(){chosen.clear();comments={};if(!batch?.week)return;try{const saved=JSON.parse(localStorage.getItem(storageKey(batch.week))||'{}');for(const id of saved.selectedIds||[])if(batch.items.some(item=>item.id===id)&&chosen.size<3)chosen.add(id);if(saved.comments&&typeof saved.comments==='object')comments=saved.comments}catch{}}
+    function save(){if(batch?.week)try{localStorage.setItem(storageKey(batch.week),JSON.stringify({selectedIds:[...chosen],comments}))}catch{}}
+    function empty(parent,value){line(parent,'div',value,'notice')}
+    function renderSelected(){ui['selected-list'].replaceChildren();const picked=batch?.items?.filter(item=>chosen.has(item.id))||[];if(!picked.length)return empty(ui['selected-list'],'ยังไม่ได้เลือกบทจาก 10 เรื่องด้านบน');for(const item of picked){const card=line(ui['selected-list'],'article','','mini-item');line(card,'strong',item.title);line(card,'p',comments[item.id]?'ขอปรับ: '+comments[item.id]:'ยังไม่มีคอมเมนต์')}}
+    function renderJobs(){const jobs=Array.isArray(batch?.production)?batch.production:[];const published=jobs.filter(job=>job.status==='published');const making=jobs.filter(job=>job.status!=='published');ui['making-list'].replaceChildren();ui['published-list'].replaceChildren();ui['making-count'].textContent=making.length;ui['published-count'].textContent=published.length;if(!making.length)empty(ui['making-list'],'ยังไม่มี Animation ที่เริ่มผลิต');if(!published.length)empty(ui['published-list'],'ยังไม่มีวิดีโอที่เผยแพร่บน YouTube');for(const job of making){const card=line(ui['making-list'],'article','','mini-item');line(card,'strong',job.title||'งานผลิต');line(card,'p',job.status||'กำลังทำ')}for(const job of published){const card=line(ui['published-list'],'article','','mini-item');line(card,'strong',job.title||'วิดีโอ');const id=job.youtubeVideoId||job.videoId;const href=job.youtubeUrl||(id?'https://www.youtube.com/watch?v='+encodeURIComponent(id):'');if(/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(href)){const a=line(card,'a','ดูบน YouTube ↗');a.href=href;a.target='_blank';a.rel='noopener noreferrer'}else line(card,'p','เผยแพร่แล้ว · ยังไม่มีลิงก์')}}
+
     function message(value) { ui.status.textContent = value; }
-    function selection() { return { series:'Tora & the Gangz', week:batch?.week, selectedIds:[...chosen], selectedTitles:batch?.items?.filter(item=>chosen.has(item.id)).map(item=>item.title)||[], selectedAt:new Date().toISOString(), note:'รอคุณเป้ยืนยันและสั่งผลิต ไม่ใช่การอนุมัติอัป YouTube' }; }
-    function updateButtons() { ui.counter.textContent = `เลือกแล้ว ${chosen.size} / 3 เรื่อง`; ui.copy.disabled = ui.download.disabled = chosen.size !== 3; }
+    function selection() { const picked=batch?.items?.filter(item=>chosen.has(item.id))||[]; return { series:'Tora & the Gangz', week:batch?.week, selectedIds:picked.map(item=>item.id), selectedTitles:picked.map(item=>item.title), comments:Object.fromEntries(picked.map(item=>[item.id,comments[item.id]||''])), selectedAt:new Date().toISOString(), note:'รอคุณเป้ยืนยันและสั่งผลิต ไม่ใช่การอนุมัติอัป YouTube' }; }
+    function updateButtons() { ui.counter.textContent = `เลือกแล้ว ${chosen.size} / 3 เรื่อง`; ui.copy.disabled = ui.download.disabled = chosen.size !== 3; ui['selected-count'].textContent=chosen.size+'/3'; renderSelected(); }
     function line(parent, tag, value, className) { const node=document.createElement(tag); node.textContent=value; if(className)node.className=className; parent.append(node); return node; }
     function render() {
-      ui.ideas.replaceChildren(); chosen.clear(); updateButtons();
+      ui.ideas.replaceChildren();
       if (!batch || batch.series !== 'Tora & the Gangz' || !Array.isArray(batch.items) || batch.items.length !== 10) {
         line(ui.ideas,'div','ยังไม่มี batch Tora & the Gangz ครบ 10 เรื่อง อาจเป็นเพราะ Claude ยังไม่รันหรือยังไม่ซิงก์สำเร็จ','notice');
-        ui.week.textContent=''; return;
+        ui.week.textContent=''; ui['ideas-count'].textContent='0'; chosen.clear(); updateButtons(); renderJobs(); return;
       }
-      ui.week.textContent=`สัปดาห์ ${batch.week} · ${batch.items.length} เรื่อง`;
+      restore(); updateButtons(); renderJobs(); ui['ideas-count'].textContent=batch.items.length; ui.week.textContent=`สัปดาห์ ${batch.week} · ${batch.items.length} เรื่อง`;
       batch.items.forEach((item,index)=>{
         const card=document.createElement('article'); card.className='card';
         const head=line(card,'div','','card-head'); line(head,'span',String(index+1),'number');
         line(head,'h3',item.title||`เรื่องที่ ${index+1}`);
-        const pick=line(head,'button','เลือกเรื่องนี้','pick'); pick.type='button'; pick.setAttribute('aria-pressed','false');
+        const pick=line(head,'button',chosen.has(item.id)?'✓ เลือกแล้ว':'เลือกเรื่องนี้','pick'); pick.type='button'; pick.setAttribute('aria-pressed',String(chosen.has(item.id))); card.classList.toggle('selected',chosen.has(item.id));
         pick.addEventListener('click',()=>{
           if(chosen.has(item.id)) chosen.delete(item.id);
           else if(chosen.size<3) chosen.add(item.id);
           else { message('เลือกได้สูงสุด 3 เรื่อง กรุณายกเลิกหนึ่งเรื่องก่อน'); return; }
-          card.classList.toggle('selected',chosen.has(item.id)); pick.textContent=chosen.has(item.id)?'✓ เลือกแล้ว':'เลือกเรื่องนี้'; pick.setAttribute('aria-pressed',String(chosen.has(item.id))); updateButtons(); message(chosen.size===3?'ครบ 3 เรื่องแล้ว ดาวน์โหลดผลเลือกหรือคัดลอกส่งต่อได้':'เลือกได้อีก '+(3-chosen.size)+' เรื่อง');
+          card.classList.toggle('selected',chosen.has(item.id)); pick.textContent=chosen.has(item.id)?'✓ เลือกแล้ว':'เลือกเรื่องนี้'; pick.setAttribute('aria-pressed',String(chosen.has(item.id))); save(); updateButtons(); message(chosen.size===3?'ครบ 3 เรื่องแล้ว ดาวน์โหลดผลเลือกหรือคัดลอกส่งต่อได้':'เลือกได้อีก '+(3-chosen.size)+' เรื่อง');
         });
         line(card,'p',item.hook||'','hook');
         const chips=line(card,'div','','chips'); for(const person of (Array.isArray(item.characters)?item.characters:[])) line(chips,'span',String(person),'chip');
@@ -123,15 +140,16 @@
           }
         }
         if(Array.isArray(item.visualPlan)) { const shots=line(details,'ol','','shots'); for(const shot of item.visualPlan) line(shots,'li',typeof shot==='string'?shot:[shot.desc,shot.movement&&'ภาพ: '+shot.movement,shot.sound&&'เสียง: '+shot.sound].filter(Boolean).join(' · ')); }
+        const label=line(card,'label','อยากให้ปรับอะไรในเรื่องนี้?','comment'); const input=line(label,'textarea',''); input.placeholder='เช่น เปลี่ยนตอนจบ เพิ่มมุก หรือปรับฉาก'; input.value=comments[item.id]||''; input.addEventListener('input',()=>{comments[item.id]=input.value;save();if(chosen.has(item.id))renderSelected()});
         ui.ideas.append(card);
       });
     }
-    function accept(value) { const next=value?.fields?.dataJson?.stringValue?JSON.parse(value.fields.dataJson.stringValue):value?.batch||value; batch=next; render(); message(batch?.series==='Tora & the Gangz'&&batch?.items?.length===10?'พร้อมเลือก 3 เรื่อง':'ข้อมูลยังไม่ใช่ 10 เรื่องของ Tora & the Gangz'); }
+    function accept(value) { const next=value?.fields?.dataJson?.stringValue?JSON.parse(value.fields.dataJson.stringValue):value?.batch||value; batch=next; render(); message(batch?.series==='Tora & the Gangz'&&batch?.items?.length===10?'พร้อมเลือก 3 เรื่อง · ตัวเลือกและคอมเมนต์บันทึกในเบราว์เซอร์นี้':'ข้อมูลยังไม่ใช่ 10 เรื่องของ Tora & the Gangz'); }
     async function refresh() { message('กำลังดึงเรื่องล่าสุด…'); try { const response=await fetch(endpoint); if(response.status===404){accept(null);return;} if(!response.ok)throw Error('HTTP '+response.status); accept(await response.json()); } catch(error) { batch=null; render(); message('เชื่อมฐานข้อมูลไม่ได้: '+error.message+' · ใช้ปุ่มเปิดไฟล์ batch JSON ได้'); } }
     ui.refresh.addEventListener('click',refresh);
     ui.file.addEventListener('change',async()=>{ const file=ui.file.files?.[0]; if(!file)return; try { accept(JSON.parse(await file.text())); } catch(error){ message('ไฟล์ JSON อ่านไม่ได้: '+error.message); } });
-    ui.copy.addEventListener('click',async()=>{ try { await navigator.clipboard.writeText(JSON.stringify(selection(),null,2)); message('คัดลอกผลเลือก 3 เรื่องแล้ว'); } catch { message('คัดลอกไม่ได้ กรุณาใช้ปุ่มดาวน์โหลด'); } });
-    ui.download.addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(selection(),null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a');a.href=url;a.download=`tora-selected-${batch.week}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('ดาวน์โหลดผลเลือก 3 เรื่องแล้ว'); });
+    ui.copy.addEventListener('click',async()=>{ try { await navigator.clipboard.writeText(JSON.stringify(selection(),null,2)); message('คัดลอกผลเลือกและคอมเมนต์แล้ว'); } catch { message('คัดลอกไม่ได้ กรุณาใช้ปุ่มดาวน์โหลด'); } });
+    ui.download.addEventListener('click',()=>{ const blob=new Blob([JSON.stringify(selection(),null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a');a.href=url;a.download=`tora-selected-${batch.week}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('ดาวน์โหลดผลเลือกและคอมเมนต์แล้ว'); });
     refresh();
   </script>
 </body>
